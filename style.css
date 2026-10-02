@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #111;
+}
+
+#gps-panel {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid #00ff9d;
+  border-radius: 14px;
+  padding: 14px 20px;
+  min-width: 280px;
+  box-shadow: 0 0 25px rgba(0, 255, 157, 0.4);
+  font-family: 'Courier New', monospace;
+  color: #fff;
+}
+
+.gps-title {
+  color: #00ff9d;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+#coords {
+  font-size: 1rem;
+  color: #7fffd4;
+  word-break: break-all;
+}
+
+.last-saved {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #ffd166;
+  border-top: 1px dashed #444;
+  padding-top: 6px;
+}
+
+#controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#controls button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: #00ff9d;
+  color: #062;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: transform .15s, box-shadow .15s;
+}
+
+#controls button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.7);
+}
+
+#playground {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  width: 120px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+#papel, #lixeira {
+  position: absolute;
+  font-size: 1.4rem;
+  user-select: none;
+  cursor: grab;
+  transition: transform .15s;
+}
+
+#papel {
+  top: 8px;
+  left: 12px;
+}
+
+#lixeira {
+  bottom: 8px;
+  right: 12px;
+  cursor: default;
+}
+
+#lixeira.hover {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 8px #ff4d4d);
+}
+
+#papel.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.user-marker {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.user-marker .dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  background: #00aaff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.9);
+  z-index: 2;
+}
+
+.user-marker .pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  background: rgba(0, 170, 255, 0.5);
+  border-radius: 50%;
+  animation: pulse 1.8s infinite ease-out;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 0.8; }
+  70%  { transform: scale(2.8); opacity: 0;   }
+  100% { transform: scale(2.8); opacity: 0;   }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Persistência PFE - GPS</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <div id="map"></div>
+  <div id="gps-panel">
+    <div class="gps-title">📍 GPS</div>
+    <div id="coords">Buscando localização...</div>
+    <div id="last-saved" class="last-saved"></div>
+  </div>
+
+  <div id="controls">
+    <button id="btn-centralizar" title="Centralizar em mim">🎯</button>
+    <button id="btn-atualizar" title="Atualizar localização">🔄</button>
+  </div>
+
+  <div id="playground">
+    <div id="papel" draggable="true" title="Arraste-me até a lixeira!">📄</div>
+    <div id="lixeira" title="Solte o papel aqui para limpar">🗑️</div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
